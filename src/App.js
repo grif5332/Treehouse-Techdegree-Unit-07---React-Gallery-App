@@ -13,7 +13,7 @@ import Gallery from './components/Gallery';
 import Header from './components/Header';
 import Nav from './components/Nav';
 import Search from './components/Search';
-
+import ErrorNotFound from './components/errorNotFound';
 
 class App extends Component {
 
@@ -106,14 +106,18 @@ class App extends Component {
             { 
               (this.state.loading)
               ? <p>Serving up your pictures...</p> :
+              <div>
               <Switch>
-              <Route exact path="/" render={() => <Gallery data={this.state.img} />} />
-              <Route path="/cats" render={() => <Gallery data={this.state.cats} />} />
-            </Switch>
+                <Route exact path="/" render={() => <Gallery data={this.state.img} />} />
+                <Route path="/cats" render={() => <Gallery data={this.state.cats} />} />
+                <Route path="/lizard" render={() => <Gallery data={this.state.lizard} />} />
+                <Route path="/elephant" render={() => <Gallery data={this.state.elephant} />} />
+                <Route component={ErrorNotFound} />
+              </Switch>
+              
+              </div>
             }
-            
           </div>
-          
         </div>
       </BrowserRouter>
     );

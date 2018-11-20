@@ -20,12 +20,18 @@ h2 {
   margin: 20px 0;
   text-transform: capitalize;
 }
-.fa-sad-cry {
+.fa-sad-cry,
+.fa-exclamation-triangle {
   font-size: 6em;
   margin: 0;
   padding: 0;
   color: rgb(40, 83, 113);
 }
+
+.fa-exclamation-triangle {
+  color: firebrick;
+}
+
 .navbtn {
   height: 2.75em;
   width: 8em;

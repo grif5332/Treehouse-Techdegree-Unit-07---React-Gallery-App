@@ -6,8 +6,8 @@ const Nav = () => {
     return (
         <nav>
             <button className="navbtn animated fadeIn slow delay-1.15s"><Link to="/cats">Cats</Link></button>
-            <button className="navbtn animated fadeIn slow delay-1.15s">Lizard</button>
-            <button className="navbtn animated fadeIn slow delay-1.15s">Elephant</button>
+            <button className="navbtn animated fadeIn slow delay-1.15s"><Link to="/lizard">Lizard</Link></button>
+            <button className="navbtn animated fadeIn slow delay-1.15s"><Link to="/elephant">Elephant</Link></button>
         </nav>
     )
 }
