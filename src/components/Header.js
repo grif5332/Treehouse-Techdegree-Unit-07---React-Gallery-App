@@ -1,10 +1,11 @@
 import React from 'react';
 
 const Header = (props) => {
+    // Just a little ol' standard header.  Nothin' special.  ;)
     return (
         <div className="header">
-            <h1 className="animated fadeIn slower">Matt's Flickr Gallery App</h1>
-            <h2 className="animated fadeIn slow delay-.5s">Using React JS!</h2>
+            <h1>Matt's Flickr Gallery App</h1>
+            <h2>Using React JS!</h2>
         </div>
     )
 }

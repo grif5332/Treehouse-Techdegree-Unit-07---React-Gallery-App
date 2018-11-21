@@ -13,7 +13,7 @@ import Gallery from './components/Gallery';
 import Header from './components/Header';
 import Nav from './components/Nav';
 import Search from './components/Search';
-import ErrorNotFound from './components/errorNotFound';
+import ErrorNotFound from './components/ErrorNotFound';
 
 class App extends Component {
 
@@ -27,16 +27,16 @@ class App extends Component {
       loading: true
     };
   }
-  
+  // Mounts the components
   componentDidMount() {
-    this.performSearch();
+    this.performSearch('monkey');
     this.catsSearch('cats');
     this.lizardSearch('lizard');
     this.elephantSearch('elephant');
   }
 
   // Search function
-  performSearch = (query = 'monkey') => {
+  performSearch = (query) => {
     axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
       .then(response => {
         this.setState({
@@ -91,30 +91,37 @@ class App extends Component {
     });
   }
 
+
+  // Renders the page.
   render() {
-    
     return (
       <BrowserRouter>
         <div>
           <div>
             <Header />
-            <Search onSearch={this.performSearch} />
+            {/* <Search onSearch={this.performSearch} /> */}
+              <Route exact path="/" component={() => <Search onSearch={this.performSearch} />} />
+              <Route exact path="/cats" component={() => <Search onSearch={this.catsSearch} />} />
+              <Route exact path="/lizard" component={() => <Search onSearch={this.lizardSearch} />} />
+              <Route exact path="/elephant" component={() => <Search onSearch={this.elephantSearch} />}/>
+              {/* <Route path="/search" component={() => <Search onSearch={this.performSearch} />} /> */}
             <Nav />
           </div>
           
-          <div className='photo-container'>
+          <div className='photo-container'>            
             { 
               (this.state.loading)
               ? <p>Serving up your pictures...</p> :
               <div>
-              <Switch>
-                <Route exact path="/" render={() => <Gallery data={this.state.img} />} />
-                <Route path="/cats" render={() => <Gallery data={this.state.cats} />} />
-                <Route path="/lizard" render={() => <Gallery data={this.state.lizard} />} />
-                <Route path="/elephant" render={() => <Gallery data={this.state.elephant} />} />
-                <Route component={ErrorNotFound} />
-              </Switch>
-              
+                <Switch>
+                  <Route exact path="/" render={() => <Gallery data={this.state.img} />} />
+                  <Route exact path="/cats" render={() => <Gallery data={this.state.cats} />} />
+                  <Route path="/lizard" render={() => <Gallery data={this.state.lizard} />} />
+                  <Route path="/elephant" render={() => <Gallery data={this.state.elephant} />} />
+                  {/* <Route exact path="/search" render={() => <Gallery data={this.state.img} />} /> */}
+                  <Route component={ErrorNotFound} />
+                </Switch>
+                
               </div>
             }
           </div>

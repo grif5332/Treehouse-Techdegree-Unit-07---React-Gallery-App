@@ -6,19 +6,21 @@ class Search extends Component {
         searchData: ''
     }
 
+    // sets searchData to the value of the input.
     onSearchChange = e => {
         this.setState({searchData: e.target.value});
     }
 
     handleSubmit = e => {
         e.preventDefault();
-        this.props.onSearch(this.state.searchData);
+        // this.props.onSearch(this.state.searchData);
+        this.props.onSearch(this.query.value);
         e.currentTarget.reset();
     }
 
     render () {
         return (
-            <form className="search-form animated fadeIn slow delay-.75s" onSubmit={this.handleSubmit}>
+            <form className="search-form" onSubmit={this.handleSubmit}>
                 <input type="search" name="search" onChange={this.onSearchChange} ref={(input) => this.query = input} placeholder="Search" required/>
                 <button type="submit" className="search-button">
                     <svg fill="#fff" height="24" viewBox="0 0 23 23" width="24" xmlns="http://www.w3.org/2000/svg">

@@ -5,10 +5,12 @@ import NoResults from '../components/NoResults';
 // Gallery will get props from App
 const Gallery = (props) => {
 
+    // takes the props data and stores in searchResult
     let searchResult = props.data;
 
+    // if the searchResult length is more than 0 make the 'Image' and map it.
+    // Then, return the results in a <ul>.  If the result is 0, return the <NoResults /> component. 
     if(searchResult.length > 0) {
-
         let resultIMG = searchResult.map(result => 
             <Image url={`https://farm${result.farm}.staticflickr.com/${result.server}/${result.id}_${result.secret}.jpg`} key={result.id} title={result.title} />)
 
@@ -23,8 +25,6 @@ const Gallery = (props) => {
                 <NoResults />
             </div>)
     }
-
-    
 }
 
 export default Gallery;

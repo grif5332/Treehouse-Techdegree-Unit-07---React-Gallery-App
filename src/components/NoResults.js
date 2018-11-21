@@ -1,7 +1,9 @@
 import React from 'react';
 
 const NoResults = (props) => {
-
+    // When someone makes a search that results in 0.
+    // The NoResult component is rendered.
+    // Uses Font-Awesome for the cry icon.  Animate.css for the headshake animation.
     return (
         <div>
             <i className="far fa-sad-cry animated infinite headShake"></i>
