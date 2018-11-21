@@ -14,6 +14,7 @@ import Header from './components/Header';
 import Nav from './components/Nav';
 import Search from './components/Search';
 import ErrorNotFound from './components/ErrorNotFound';
+import Loading from './components/Loading';
 
 class App extends Component {
 
@@ -99,7 +100,7 @@ class App extends Component {
         <div>
           <div>
             <Header />
-            {/* <Search onSearch={this.performSearch} /> */}
+              {/* <Search onSearch={this.performSearch} /> */}
               <Route exact path="/" component={() => <Search onSearch={this.performSearch} />} />
               <Route exact path="/cats" component={() => <Search onSearch={this.catsSearch} />} />
               <Route exact path="/lizard" component={() => <Search onSearch={this.lizardSearch} />} />
@@ -111,7 +112,7 @@ class App extends Component {
           <div className='photo-container'>            
             { 
               (this.state.loading)
-              ? <p>Serving up your pictures...</p> :
+              ? <Loading /> :
               <div>
                 <Switch>
                   <Route exact path="/" render={() => <Gallery data={this.state.img} />} />
@@ -120,8 +121,7 @@ class App extends Component {
                   <Route path="/elephant" render={() => <Gallery data={this.state.elephant} />} />
                   {/* <Route exact path="/search" render={() => <Gallery data={this.state.img} />} /> */}
                   <Route component={ErrorNotFound} />
-                </Switch>
-                
+                </Switch> 
               </div>
             }
           </div>
