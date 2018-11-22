@@ -5,9 +5,9 @@ const Nav = () => {
     // This creates the Navigation for the canned searches.  
     return (
         <nav>
-            <button className="navbtn"><Link to="/cats">Cats</Link></button>
-            <button className="navbtn"><Link to="/lizard">Lizard</Link></button>
-            <button className="navbtn"><Link to="/elephant">Elephant</Link></button>
+            <Link to="/cats"><button className="navbtn">Cats</button></Link>
+            <Link to="/lizard"><button className="navbtn">Lizard</button></Link>
+            <Link to="/elephant"><button className="navbtn">Elephant</button></Link>
         </nav>
     )
 }

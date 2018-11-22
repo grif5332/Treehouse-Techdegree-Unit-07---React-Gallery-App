@@ -100,12 +100,11 @@ class App extends Component {
         <div>
           <div>
             <Header />
-              {/* <Search onSearch={this.performSearch} /> */}
               <Route exact path="/" component={() => <Search onSearch={this.performSearch} />} />
               <Route exact path="/cats" component={() => <Search onSearch={this.catsSearch} />} />
               <Route exact path="/lizard" component={() => <Search onSearch={this.lizardSearch} />} />
               <Route exact path="/elephant" component={() => <Search onSearch={this.elephantSearch} />}/>
-              {/* <Route path="/search" component={() => <Search onSearch={this.performSearch} />} /> */}
+              <Route exact path="/search" component={() => <Search onSearch={this.performSearch} />} />
             <Nav />
           </div>
           
@@ -119,7 +118,7 @@ class App extends Component {
                   <Route exact path="/cats" render={() => <Gallery data={this.state.cats} />} />
                   <Route path="/lizard" render={() => <Gallery data={this.state.lizard} />} />
                   <Route path="/elephant" render={() => <Gallery data={this.state.elephant} />} />
-                  {/* <Route exact path="/search" render={() => <Gallery data={this.state.img} />} /> */}
+                  <Route path="/search" render={() => <Gallery data={this.state.img} />} />
                   <Route component={ErrorNotFound} />
                 </Switch> 
               </div>
